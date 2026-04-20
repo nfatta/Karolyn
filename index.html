@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karolyn Burns — Curriculum & Education Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #3F6F73;
+    --teal-dark: #2d5256;
+    --teal-light: #e8f2f3;
+    --sage: #A3BFA8;
+    --sage-light: #edf4ee;
+    --gold: #C9A46A;
+    --dark: #2B2B2B;
+    --bg: #F4F5F3;
+    --white: #ffffff;
+    --muted: #6b7280;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--dark); font-size: 16px; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e5e7e6;
+    padding: 0 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--teal); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('assets/photos/Wakulla Springs.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.42);
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    padding: 5rem 4rem;
+    max-width: 780px;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sage); margin-bottom: 1.25rem;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5.5vw, 4.8rem);
+    line-height: 1.05; color: var(--white); margin-bottom: 1.25rem;
+  }
+  .hero-title em { font-style: italic; color: var(--sage); }
+  .hero-sub {
+    font-size: 1.05rem; color: rgba(255,255,255,0.85);
+    max-width: 540px; margin-bottom: 1rem; line-height: 1.75;
+  }
+  .hero-specialization {
+    font-size: 1rem; color: rgba(255,255,255,0.75);
+    max-width: 540px; margin-bottom: 2.5rem; line-height: 1.7;
+    border-left: 3px solid var(--sage); padding-left: 1rem;
+    font-style: italic;
+  }
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--dark);
+    padding: 0.9rem 2.2rem; border-radius: 2px;
+    font-size: 0.9rem; font-weight: 500; text-decoration: none;
+    letter-spacing: 0.02em; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #b8903a; transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { padding: 5rem 4rem; }
+  .section-label {
+    font-size: 0.73rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sage); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--teal); line-height: 1.15; margin-bottom: 1.5rem;
+  }
+
+  /* WHAT I DO */
+  .what { background: var(--white); }
+  .what-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3.5rem; align-items: start; max-width: 1100px;
+  }
+  .what-body p { color: #4a5568; margin-bottom: 1rem; }
+  .what-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .tag {
+    background: var(--teal-light); color: var(--teal-dark);
+    font-size: 0.78rem; font-weight: 500;
+    padding: 0.35rem 0.85rem; border-radius: 2px;
+  }
+  .what-aside {
+    position: relative; overflow: hidden;
+    border-radius: 2px; min-height: 340px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .what-aside-bg {
+    position: absolute; inset: 0;
+    background-image: url('assets/photos/St Marks NWR.jpg');
+    background-size: cover; background-position: center;
+    filter: brightness(0.5);
+  }
+  .what-aside-content {
+    position: relative; z-index: 1;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(30,60,62,0.95) 0%, rgba(30,60,62,0.6) 60%, transparent 100%);
+  }
+  .what-aside-content h3 { font-family: var(--serif); font-size: 1.5rem; color: var(--sage); margin-bottom: 0.75rem; }
+  .what-aside-content p { color: rgba(255,255,255,0.88); font-size: 0.95rem; line-height: 1.65; }
+
+  /* SERVICES */
+  .services { background: var(--bg); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+  .service-card {
+    background: var(--white); padding: 2rem; border-radius: 2px;
+    border-top: 3px solid var(--teal); transition: transform 0.2s;
+  }
+  .service-card:hover { transform: translateY(-3px); }
+  .service-card:last-child { border-top-color: var(--gold); }
+  .service-card h3 { font-family: var(--serif); font-size: 1.1rem; color: var(--teal); margin-bottom: 0.75rem; }
+  .service-card:last-child h3 { color: #8a6520; }
+  .service-card ul { list-style: none; padding: 0; }
+  .service-card ul li { font-size: 0.87rem; color: var(--muted); padding: 0.28rem 0 0.28rem 1rem; position: relative; }
+  .service-card ul li::before { content: '–'; position: absolute; left: 0; color: var(--sage); }
+  .services-note { margin-top: 1.5rem; font-size: 0.88rem; color: var(--muted); font-style: italic; }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--white); }
+  .portfolio-intro { color: #4a5568; max-width: 620px; margin-bottom: 2.5rem; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .port-card { border: 1px solid #e5e7e6; border-radius: 2px; overflow: hidden; display: flex; flex-direction: column; }
+  .port-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+  .port-header { padding: 1.25rem 1.25rem 0.75rem; }
+  .port-badge {
+    display: inline-block; font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.09em; text-transform: uppercase;
+    background: var(--teal-light); color: var(--teal-dark);
+    padding: 0.25rem 0.6rem; border-radius: 2px; margin-bottom: 0.5rem;
+  }
+  .port-badge.gold { background: #f7f0e4; color: #7a5a20; }
+  .port-header h3 { font-family: var(--serif); font-size: 1.05rem; color: var(--teal); line-height: 1.3; }
+  .port-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+  .port-body p { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.75rem; flex: 1; line-height: 1.6; }
+  .port-body ul { list-style: none; padding: 0; margin-bottom: 1.25rem; }
+  .port-body ul li { font-size: 0.82rem; color: #5a6475; padding: 0.2rem 0 0.2rem 1rem; position: relative; }
+  .port-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--sage); font-size: 0.75rem; }
+  .port-location {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.72rem; color: var(--teal); font-weight: 500;
+    margin-top: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .port-location::before { content: '📍'; font-size: 0.7rem; }
+  .port-credit { font-size: 0.72rem; color: #999; font-style: italic; }
+  .btn-outline {
+    display: inline-block; border: 1px solid var(--teal); color: var(--teal);
+    padding: 0.5rem 1.2rem; border-radius: 2px; font-size: 0.82rem; font-weight: 500;
+    text-decoration: none; transition: background 0.2s, color 0.2s; align-self: flex-start;
+  }
+  .btn-outline:hover { background: var(--teal); color: var(--white); }
+  .portfolio-note { margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+  /* HOW IT WORKS */
+  .process { position: relative; overflow: hidden; color: var(--white); }
+  .process-bg {
+    position: absolute; inset: 0;
+    background-image: url('assets/photos/ST Marks NWR.jpg');
+    background-size: cover; background-position: center 30%;
+    filter: brightness(0.28);
+  }
+  .process-content { position: relative; z-index: 1; }
+  .process .section-label { color: var(--sage); }
+  .process .section-title { color: var(--white); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0; margin-top: 3rem; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 27px; left: 10%; right: 10%;
+    height: 1px; background: rgba(255,255,255,0.2);
+  }
+  .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 1rem; }
+  .step-num {
+    width: 54px; height: 54px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-size: 1.3rem; color: var(--sage);
+    margin-bottom: 1.25rem; position: relative; z-index: 1;
+  }
+  .step h4 { font-size: 0.87rem; font-weight: 500; color: var(--white); margin-bottom: 0.4rem; line-height: 1.3; }
+  .step p { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .process-note {
+    margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 0.88rem; color: rgba(255,255,255,0.65); font-style: italic;
+  }
+
+  /* ABOUT */
+  .about { background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; max-width: 980px; }
+  .about-photo-wrap { position: relative; }
+  .about-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center top; border-radius: 2px; display: block; }
+  .about-heron {
+    position: absolute; bottom: -1.25rem; right: -1.25rem;
+    width: 110px; height: 110px; object-fit: cover;
+    border-radius: 2px; border: 3px solid var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .about-body p { color: #4a5568; margin-bottom: 1rem; }
+  .about-body .section-title { margin-bottom: 0.5rem; }
+  .about-tagline { font-family: var(--serif); font-style: italic; font-size: 1.05rem; color: var(--teal); margin-bottom: 1.5rem; opacity: 0.8; }
+
+  /* CONTACT */
+  .contact { background: var(--teal); text-align: center; padding: 6rem 4rem; }
+  .contact .section-label { color: var(--sage); }
+  .contact .section-title { color: var(--white); margin-bottom: 0.75rem; }
+  .contact-sub { color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .contact-email {
+    font-size: 0.95rem; color: var(--sage); text-decoration: none;
+    border-bottom: 1px solid rgba(163,191,168,0.5); padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .contact-email:hover { border-color: var(--sage); }
+  .contact-note { margin-top: 2.5rem; font-size: 0.83rem; color: rgba(255,255,255,0.5); font-style: italic; }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: rgba(255,255,255,0.4); text-align: center; padding: 1.75rem; font-size: 0.78rem; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero-content { padding: 4rem 1.5rem; }
+    .what-grid, .about-grid { grid-template-columns: 1fr; }
+    .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .process-steps::before { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-heron { display: none; }
+    .about-photo { aspect-ratio: 4/3; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Karolyn Burns</a>
+  <ul class="nav-links">
+    <li><a href="#what">What I Do</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO — background: assets/photos/Wakulla Springs.jpg (Wakulla Springs) -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Curriculum &amp; Education Consulting</p>
+    <h1 class="hero-title">Research that<br><em>reaches</em><br>classrooms.</h1>
+    <p class="hero-sub">I translate research, programs, and local data into classroom-ready materials that educators can actually use.</p>
+    <p class="hero-specialization">I specialize in translating environmental research and local data into classroom-ready materials that help students understand and respond to real-world challenges.</p>
+    <a class="btn-primary" href="https://cal.com/karolyn-burns-cmuupj" target="_blank">Schedule a conversation</a>
+  </div>
+</section>
+
+<!-- WHAT I DO — sidebar background: assets/photos/St Marks NWR.jpg (St. Marks NWR) -->
+<section class="what" id="what">
+  <div class="what-grid">
+    <div class="what-body">
+      <p class="section-label">What I do</p>
+      <h2 class="section-title">Filling a unique niche</h2>
+      <p>You're already doing the work. Environmental research, programs, outreach.</p>
+      <p>Translating that into classroom-ready materials takes a specific mix of content knowledge and teaching experience. That's what I bring.</p>
+      <p>I develop standards-aligned lessons, educator guides, and interpretive materials that are clear, practical, and ready to use in real classrooms.</p>
+      <p>Materials can be used by your own educators in programs or outreach, or shared more broadly with schools and communities. When relevant, everything is aligned with CPALMS and NGSS to make adoption easy for teachers.</p>
+      <div class="what-tags">
+        <span class="tag">CPALMS-aligned</span>
+        <span class="tag">NGSS-aligned</span>
+        <span class="tag">Classroom-ready</span>
+        <span class="tag">Minimal prep</span>
+        <span class="tag">Editable Canva files</span>
+        <span class="tag">Florida-focused</span>
+      </div>
+    </div>
+    <div class="what-aside">
+      <div class="what-aside-bg"></div>
+      <div class="what-aside-content">
+        <h3>The gap I fill</h3>
+        <p>Your organization's work is meaningful. What's often missing is the translation layer — the lesson plan, the educator guide, the interpretive sign — that makes it usable in a classroom or public setting.</p>
+        <p style="margin-top:0.75rem;">Everything I develop is designed to be clear, practical, and usable without additional prep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-label">Services</p>
+  <h2 class="section-title">What I can develop for you</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Lesson &amp; Activity Development</h3>
+      <ul>
+        <li>Lessons, activities, or short-form materials</li>
+        <li>Teacher guides and student handouts</li>
+        <li>Slide decks (if needed)</li>
+        <li>Standards alignment (CPALMS &amp; NGSS)</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3>Program &amp; Educator Materials</h3>
+      <ul>
+        <li>Designed for your staff or educators to use directly</li>
+        <li>Supports field trips, site visits, and outreach programs</li>
+        <li>Structured for easy implementation</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3>Materials for Sharing &amp; Distribution</h3>
+      <ul>
+        <li>Resources you can publish, share, or send to schools</li>
+        <li>Extends your reach beyond in-person programs</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3>Interpretive Signage &amp; Educational Displays</h3>
+      <ul>
+        <li>Exhibit panels and signage for visitor education</li>
+        <li>Content based on your research, programs, or local context</li>
+        <li>Connects visitors to action and deeper learning</li>
+        <li>Clean layouts ready for your design team to refine</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3>Lesson + Educator Support</h3>
+      <ul>
+        <li>Educator walkthrough session</li>
+        <li>Implementation guidance</li>
+        <li>Feedback-based revisions</li>
+        <li>Focused on real classroom usability</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <h3>Custom Projects</h3>
+      <ul>
+        <li>Something else in mind? Let's talk through it</li>
+        <li>All materials can align with your branding</li>
+        <li>Delivered as editable Canva files</li>
+      </ul>
+    </div>
+  </div>
+  <p class="services-note">Projects are scoped based on your needs, timeline, and budget. Happy to talk through options at different levels.</p>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-title">Selected work</h2>
+  <p class="portfolio-intro">A sample of curriculum, education, and interpretive materials developed for environmental organizations and publication.</p>
+  <div class="portfolio-grid">
+
+    <div class="port-card">
+      <div class="port-header">
+        <span class="port-badge">Published project</span>
+        <h3>Local Waters, Global Impact</h3>
+      </div>
+      <div class="port-body">
+        <p>A place-based lesson centered on water quality, climate impacts, and community stewardship.</p>
+        <ul>
+          <li>Students investigate real water samples and analyze data</li>
+          <li>Connects climate change to local environmental conditions</li>
+          <li>Hands-on testing, modeling, and evidence-based claims</li>
+          <li>Standards-aligned unit on environmental systems</li>
+        </ul>
+        <!-- TODO: Replace # with actual article URL -->
+        <a class="btn-outline" href="#" target="_blank">View article</a>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <div class="port-header">
+        <span class="port-badge">Published project</span>
+        <h3>The Air We Breathe</h3>
+      </div>
+      <div class="port-body">
+        <p>A project-based learning experience connecting air quality, climate change, and environmental justice.</p>
+        <ul>
+          <li>Students collect real air quality data with portable sensors</li>
+          <li>Analyze patterns and identify environmental disparities</li>
+          <li>Applies claims-evidence-reasoning (CER) framework</li>
+          <li>Connects data to civic action and advocacy writing</li>
+        </ul>
+        <!-- TODO: Replace # with actual article URL -->
+        <a class="btn-outline" href="#" target="_blank">View article</a>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <img class="port-img" src="assets/photos/IMG_5467.jpeg" alt="Lemur conservation education sign at North Florida Wildlife Center">
+      <div class="port-header">
+        <span class="port-badge gold">Installed signage</span>
+        <h3>Lemurs — Madagascar's Forest Gardeners</h3>
+      </div>
+      <div class="port-body">
+        <p>Interpretive sign connecting lemur conservation, climate impacts, and visitor action.</p>
+        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
+        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <img class="port-img" src="assets/photos/IMG_5469.jpeg" alt="African vulture conservation education sign">
+      <div class="port-header">
+        <span class="port-badge gold">Installed signage</span>
+        <h3>African Vultures — Nature's Clean-Up Crew</h3>
+      </div>
+      <div class="port-body">
+        <p>Visitor-facing sign translating vulture conservation and climate threats into accessible public education.</p>
+        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
+        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <img class="port-img" src="assets/photos/IMG_5468.jpeg" alt="Gray fox conservation education sign">
+      <div class="port-header">
+        <span class="port-badge gold">Installed signage</span>
+        <h3>Gray Foxes — Adapting in a Changing World</h3>
+      </div>
+      <div class="port-body">
+        <p>Educational signage connecting gray fox ecology, habitat pressures, and conservation steps for visitors.</p>
+        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
+        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
+      </div>
+    </div>
+
+    <div class="port-card">
+      <img class="port-img" src="assets/photos/IMG_5466.jpeg" alt="Giant anteater conservation education sign">
+      <div class="port-header">
+        <span class="port-badge gold">Installed signage</span>
+        <h3>Bumi the Giant Anteater — Conservation on the Move</h3>
+      </div>
+      <div class="port-body">
+        <p>Sign exploring giant anteater road safety challenges and the role of habitat corridors in climate-resilient conservation.</p>
+        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
+        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
+      </div>
+    </div>
+
+  </div>
+  <p class="portfolio-note">Additional curriculum and education projects developed in collaboration with partner organizations are available upon request.</p>
+</section>
+
+<!-- HOW IT WORKS — background: assets/photos/ST Marks NWR.jpg (St. Marks NWR coastal marsh) -->
+<section class="process" id="process">
+  <div class="process-bg"></div>
+  <div class="process-content">
+    <p class="section-label">How it works</p>
+    <h2 class="section-title">A simple, scoped process</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Initial conversation</h4>
+        <p>Understand your work and goals</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Defined scope</h4>
+        <p>Clear timeline and deliverables</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Development</h4>
+        <p>Content + clean layout</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Educator support</h4>
+        <p>Walkthrough + implementation guidance (if included)</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h4>Feedback + revisions</h4>
+        <p>One round of revisions included</p>
+      </div>
+    </div>
+    <p class="process-note">Projects are clearly scoped and designed to be easy to implement from day one.</p>
+  </div>
+</section>
+
+<!-- ABOUT — headshot: assets/photos/IMG_2533.jpeg, accent: assets/photos/Wakulla Springs2.jpg (Wakulla Springs) -->
+<section class="about" id="about">
+  <p class="section-label">About</p>
+  <div class="about-grid">
+    <div class="about-photo-wrap">
+      <img class="about-photo" src="assets/photos/IMG_2533.jpeg" alt="Karolyn Burns at a Florida Forest Service planting event">
+      <img class="about-heron" src="assets/photos/Wakulla Springs2.jpg" alt="Heron at Wakulla Springs">
+    </div>
+    <div class="about-body">
+      <h2 class="section-title">Karolyn Burns</h2>
+      <p class="about-tagline">Curriculum developer. Conservation biologist. Florida educator.</p>
+      <p>Karolyn Burns is a curriculum and education consultant with a background in conservation biology and climate education.</p>
+      <p>She has developed and led educational programs that translate complex environmental topics into accessible, classroom-ready materials for Florida's schools, nature centers, and public lands.</p>
+      <p>Her work includes published practitioner-focused projects that connect real-world data, community-based work, and classroom instruction — as well as installed interpretive signage bridging wildlife conservation and public education.</p>
+      <p>She works with environmental nonprofits, nature centers, and conservation organizations to turn their research and programs into materials that reach classrooms and communities in meaningful ways.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-label">Get in touch</p>
+  <h2 class="section-title">Let's talk about your project</h2>
+  <p class="contact-sub">Feel free to reach out or schedule a time to talk. Projects are scoped based on your needs, timeline, and budget.</p>
+  <div class="contact-links">
+    <a class="btn-primary" href="https://cal.com/karolyn-burns-cmuupj" target="_blank">Schedule a conversation</a>
+    <a class="contact-email" href="mailto:KarolynCBurns@gmail.com">KarolynCBurns@gmail.com</a>
+  </div>
+  <p class="contact-note">Happy to talk through options at different levels.</p>
+</section>
+
+<footer>
+  <p>&copy; 2026 Karolyn Burns &middot; Curriculum &amp; Education Consulting</p>
+</footer>
+
+</body>
+</html>
