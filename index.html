@@ -252,6 +252,41 @@
   /* FOOTER */
   footer { background: var(--dark); color: rgba(255,255,255,0.4); text-align: center; padding: 1.75rem; font-size: 0.78rem; }
 
+
+  /* ARTICLE GRID */
+  .article-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 3.5rem; }
+
+  /* SIGNAGE HEADER */
+  .signage-header { border-top: 1px solid #e5e7e6; padding-top: 2.5rem; margin-bottom: 1.25rem; }
+  .signage-header h3 { font-family: var(--serif); font-size: 1.3rem; color: var(--teal); margin-bottom: 0.4rem; }
+  .signage-location { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .signage-location::before { content: '📍 '; }
+  .signage-credit { font-size: 0.78rem; color: #aaa; font-style: italic; margin-bottom: 1.5rem; }
+
+  /* GALLERY GRID */
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .gallery-item { position: relative; overflow: hidden; border-radius: 2px; cursor: pointer; height: 220px; background: var(--teal-light); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0.85rem 1rem 0.75rem;
+    background: linear-gradient(to top, rgba(30,60,62,0.92) 0%, transparent 100%);
+    color: var(--white); font-size: 0.82rem; font-weight: 500; line-height: 1.3;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.92);
+    align-items: center; justify-content: center; cursor: pointer;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 2px; cursor: default; }
+  .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: rgba(255,255,255,0.7); font-size: 2.5rem; cursor: pointer; line-height: 1; transition: color 0.2s; }
+  .lightbox-close:hover { color: var(--white); }
+  .lightbox-caption { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 0.85rem; text-align: center; white-space: nowrap; }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 0 1.5rem; }
@@ -286,8 +321,7 @@
   <div class="hero-content">
     <p class="hero-eyebrow">Curriculum &amp; Education Consulting</p>
     <h1 class="hero-title">Research that<br><em>reaches</em><br>classrooms.</h1>
-    <p class="hero-sub">I translate research, programs, and local data into classroom-ready materials that educators can actually use.</p>
-    <p class="hero-specialization">I specialize in translating environmental research and local data into classroom-ready materials that help students understand and respond to real-world challenges.</p>
+  <p class="hero-specialization">I specialize in translating environmental research and local data into classroom-ready materials that help students understand and respond to real-world challenges.</p>
     <a class="btn-primary" href="https://cal.com/karolyn-burns-cmuupj" target="_blank">Schedule a conversation</a>
   </div>
 </section>
@@ -386,7 +420,8 @@
   <p class="section-label">Portfolio</p>
   <h2 class="section-title">Selected work</h2>
   <p class="portfolio-intro">A sample of curriculum, education, and interpretive materials developed for environmental organizations and publication.</p>
-  <div class="portfolio-grid">
+  <!-- Published articles — 2 column -->
+  <div class="article-grid">
 
     <div class="port-card">
       <div class="port-header">
@@ -401,8 +436,7 @@
           <li>Hands-on testing, modeling, and evidence-based claims</li>
           <li>Standards-aligned unit on environmental systems</li>
         </ul>
-        <!-- TODO: Replace # with actual article URL -->
-        <a class="btn-outline" href="#" target="_blank">View article</a>
+        <a class="btn-outline" href="https://www.tandfonline.com/doi/full/10.1080/00368148.2025.2462340" target="_blank">View article</a>
       </div>
     </div>
 
@@ -419,68 +453,48 @@
           <li>Applies claims-evidence-reasoning (CER) framework</li>
           <li>Connects data to civic action and advocacy writing</li>
         </ul>
-        <!-- TODO: Replace # with actual article URL -->
-        <a class="btn-outline" href="#" target="_blank">View article</a>
-      </div>
-    </div>
-
-    <div class="port-card">
-      <img class="port-img" src="assets/photos/IMG_5467.jpeg" alt="Lemur conservation education sign at North Florida Wildlife Center">
-      <div class="port-header">
-        <span class="port-badge gold">Installed signage</span>
-        <h3>Lemurs — Madagascar's Forest Gardeners</h3>
-      </div>
-      <div class="port-body">
-        <p>Interpretive sign connecting lemur conservation, climate impacts, and visitor action.</p>
-        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
-        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
-      </div>
-    </div>
-
-    <div class="port-card">
-      <img class="port-img" src="assets/photos/IMG_5469.jpeg" alt="African vulture conservation education sign">
-      <div class="port-header">
-        <span class="port-badge gold">Installed signage</span>
-        <h3>African Vultures — Nature's Clean-Up Crew</h3>
-      </div>
-      <div class="port-body">
-        <p>Visitor-facing sign translating vulture conservation and climate threats into accessible public education.</p>
-        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
-        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
-      </div>
-    </div>
-
-    <div class="port-card">
-      <img class="port-img" src="assets/photos/IMG_5468.jpeg" alt="Gray fox conservation education sign">
-      <div class="port-header">
-        <span class="port-badge gold">Installed signage</span>
-        <h3>Gray Foxes — Adapting in a Changing World</h3>
-      </div>
-      <div class="port-body">
-        <p>Educational signage connecting gray fox ecology, habitat pressures, and conservation steps for visitors.</p>
-        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
-        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
-      </div>
-    </div>
-
-    <div class="port-card">
-      <img class="port-img" src="assets/photos/IMG_5466.jpeg" alt="Giant anteater conservation education sign">
-      <div class="port-header">
-        <span class="port-badge gold">Installed signage</span>
-        <h3>Bumi the Giant Anteater — Conservation on the Move</h3>
-      </div>
-      <div class="port-body">
-        <p>Sign exploring giant anteater road safety challenges and the role of habitat corridors in climate-resilient conservation.</p>
-        <p class="port-location">North Florida Wildlife Center, Gainesville, FL</p>
-        <p class="port-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
+        <a class="btn-outline" href="https://www.nsta.org/science-teacher/science-teacher-marchapril-2023/air-we-breathe" target="_blank">View article</a>
       </div>
     </div>
 
   </div>
+
+  <!-- Signage gallery -->
+  <div class="signage-header">
+    <h3>Educational Signage</h3>
+    <p class="signage-location">The following educational signs are installed at North Florida Wildlife Center, Lamont, FL</p>
+    <p class="signage-credit">Content and initial concept by Karolyn Burns. Final design in collaboration with the CLEO Institute graphics team.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick='openLightbox("assets/photos/IMG_5467.jpeg", "Lemurs — Madagascar&apos;s Forest Gardeners")'>
+      <img src="assets/photos/IMG_5467.jpeg" alt="Lemur conservation education sign">
+      <div class="gallery-caption">Lemurs — Madagascar's Forest Gardeners</div>
+    </div>
+    <div class="gallery-item" onclick='openLightbox("assets/photos/IMG_5469.jpeg", "African Vultures — Nature&apos;s Clean-Up Crew")'>
+      <img src="assets/photos/IMG_5469.jpeg" alt="African vulture conservation education sign">
+      <div class="gallery-caption">African Vultures — Nature's Clean-Up Crew</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('assets/photos/IMG_5468.jpeg', 'Gray Foxes — Adapting in a Changing World')">
+      <img src="assets/photos/IMG_5468.jpeg" alt="Gray fox conservation education sign">
+      <div class="gallery-caption">Gray Foxes — Adapting in a Changing World</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('assets/photos/IMG_5466.jpeg', 'Bumi the Giant Anteater — Conservation on the Move')">
+      <img src="assets/photos/IMG_5466.jpeg" alt="Giant anteater conservation education sign">
+      <div class="gallery-caption">Bumi the Giant Anteater — Conservation on the Move</div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
   <p class="portfolio-note">Additional curriculum and education projects developed in collaboration with partner organizations are available upon request.</p>
 </section>
 
-<!-- HOW IT WORKS — background: assets/photos/ST Marks NWR.jpg (St. Marks NWR coastal marsh) -->
+<!-- HOW IT WORKS — background: assets/photos/ST Marks NWR(2).jpg (St. Marks NWR coastal marsh) -->
 <section class="process" id="process">
   <div class="process-bg"></div>
   <div class="process-content">
@@ -552,5 +566,21 @@
   <p>&copy; 2026 Karolyn Burns &middot; Curriculum &amp; Education Consulting</p>
 </footer>
 
+
+<script>
+  function openLightbox(src, caption) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 </body>
 </html>
